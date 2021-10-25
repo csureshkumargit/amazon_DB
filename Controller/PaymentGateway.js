@@ -20,7 +20,7 @@ exports.payment = (req, res) => {
         params['ORDER_ID'] = uuidv4(),
         params['CUST_ID'] = process.env.PAYTM_CUST_ID,
         params['TXN_AMOUNT'] = totalAmount,
-        params['CALLBACK_URL'] = 'http://localhost:2021/api/callback',
+        params['CALLBACK_URL'] = 'https://amazon-clone-db.herokuapp.com/api/callback',
         params['EMAIL'] = email,
         params['MOBILE_NO'] = process.env.MOBILE_NUMBER
 
