@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 dotenv.config();
-const PORT = process.env.PORT || 2021;
+const port = process.env.PORT || 2021;
 const userAuth = require('./Router/Users');
 const mobile = require('./Router/mobile');
 const fashionmen = require('./Router/fashionmen');
@@ -39,7 +39,7 @@ app.use('/api', payment);
 
 mongoose.connect(process.env.SERVER_MONGO_URL).
     then(() => {
-        app.listen(PORT, () => {
-            console.log(`service started @ ${PORT}`);
+        app.listen(port, () => {
+            console.log(`service started @ ${port}`);
         })
     }).catch(err => console.log('DB not connected'));
