@@ -3,7 +3,6 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const localhost = 'localhost';
 const PORT = process.env.PORT || 2021;
 const app = express();
 dotenv.config();
@@ -20,6 +19,9 @@ const customercare = require('./Router/customercare');
 const payment = require('./Router/payment');
 
 //Middle ware
+app.get('/',(req,res)=>{
+res.send('Welcome to Amazon DB Services');
+});
 app.use(cors());
 app.use(express.json());
 app.use('/api/user', userAuth);
@@ -37,7 +39,7 @@ app.use('/api', payment);
 
 mongoose.connect(process.env.SERVER_MONGO_URL).
     then(() => {
-        app.listen(PORT, localhost, () => {
-            console.log(`service started @ ${localhost}:${PORT}`);
+        app.listen(PORT, () => {
+            console.log(`service started @${PORT}`);
         })
     }).catch(err => console.log('DB not connected'));
