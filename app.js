@@ -40,6 +40,6 @@ app.use('/api', payment);
 mongoose.connect(process.env.SERVER_MONGO_URL).
     then(() => {
         app.listen(PORT, () => {
-            console.log(`service started @${PORT}`);
+            console.log(`service started @ ${PORT}`);
         })
     }).catch(err => console.log('DB not connected'));
