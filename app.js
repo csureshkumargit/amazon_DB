@@ -19,11 +19,11 @@ const customercare = require('./Router/customercare');
 const payment = require('./Router/payment');
 
 //Middle ware
-app.get('/',(req,res)=>{
-res.send('Welcome to Amazon DB Services');
-});
 app.use(cors());
 app.use(express.json());
+app.get('/', (req, res) => {
+    res.send('Welcome to Amazon DB Services');
+})
 app.use('/api/user', userAuth);
 app.use('/mobile', mobile);
 app.use('/fashionmen', fashionmen);
