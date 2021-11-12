@@ -16,6 +16,7 @@ const appliances = require('./Router/appliances');
 const searchproduct = require('./Router/searchproduct')
 const order = require('./Router/Order');
 const customercare = require('./Router/customercare');
+const tempOrders = require('./Router/tempOrders');
 const payment = require('./Router/payment');
 
 //Middle ware
@@ -34,6 +35,7 @@ app.use('/appliances', appliances);
 app.use('/searchproduct', searchproduct);
 app.use('/api/orders', order);
 app.use('/api/customercare', customercare);
+app.use('/api/tempOrders', tempOrders);
 app.use('/api', payment);
 
 
