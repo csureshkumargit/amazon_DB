@@ -64,7 +64,7 @@ exports.userLogin = async (req, res) => {
         const token = jwt.sign({ userNameFound: emailFound.username }, process.env.CLIENT_KEY);
         res.cookie('jwt_token', token, {
             maxAge: 1000 * 60 * 60 * 1,
-            secure: true,
+            secure: false,
             httpOnly: true,
             // withCredentials: true,
             // credentials: "include"
