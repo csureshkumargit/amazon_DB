@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 2021;
@@ -20,8 +21,9 @@ const tempOrders = require('./Router/tempOrders');
 const payment = require('./Router/payment');
 
 //Middle ware
-app.use(cors());
+app.use(cors({ origin: "*", credentials: true }));
 app.use(express.json());
+app.use(cookieParser());
 app.get('/', (req, res) => {
     res.send('Welcome to Amazon DB Services');
 })

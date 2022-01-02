@@ -62,8 +62,15 @@ exports.userLogin = async (req, res) => {
             return res.status(200).json({ message: "Password in correct", isAuthenticated: false });
 
         const token = jwt.sign({ userNameFound: emailFound.username }, process.env.CLIENT_KEY);
-        return res.header('access-token', token).send({ jwt: token, message: "You have been Logged in Successfully", username: emailFound.username, isAuthenticated: true });
-        //return res.status(200).json({ message: "User Logged in Successfully" });
+	res.cookie('jwt_token', token, {
+            maxAge: 1000 * 60 * 60 * 1,
+            secure: false,
+            httpOnly: true,
+            // withCredentials: true,
+            // credentials: "include"
+        });
+        res.header('access-token', token).send({ jwt: token, message: "You have been Logged in Successfully", username: emailFound.username, isAuthenticated: true });
+       
 
     }
     catch (err) {
@@ -72,9 +79,20 @@ exports.userLogin = async (req, res) => {
 
 }
 
+exports.userLogout = async (req, res) => {
+    const token = req.cookies.jwt_token;
+    if (!token) {
+        res.send({ token: "not exists" });
+    }
+    else {
+        res.clearCookie("jwt_token");
+        res.send({ success: true });
+    }
+
+}
 
 exports.validateToken = (req, res, next) => {
-    const token = req.header('access-token');
+    const token = req.cookies.jwt_token;
     if (!token) {
         //console.log('token');
         return res.status(401).json({ message: 'Access denied.' });
