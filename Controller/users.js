@@ -93,6 +93,8 @@ exports.userLogout = async (req, res) => {
 
 exports.validateToken = (req, res, next) => {
     const token = req.cookies.jwt_token;
+    console.log('tk', token);
+    console.log('headers', req.headers)
     if (!token) {
         //console.log('token');
         return res.status(401).json({ message: 'Access denied.' });
@@ -104,6 +106,7 @@ exports.validateToken = (req, res, next) => {
         next();
     }
     catch (err) {
+        res.clearCookie("jwt_token");
         return res.status(400).json({ message: 'Invalid account .' });
     }
 }
