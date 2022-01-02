@@ -21,7 +21,7 @@ const tempOrders = require('./Router/tempOrders');
 const payment = require('./Router/payment');
 
 //Middle ware
-app.use(cors({ origin: "https://amazon-clone-shop.herokuapp.com/", credentials: true }));
+app.use(cors({ origin: "https://amazon-clone-shop.herokuapp.com", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.get('/', (req, res) => {
