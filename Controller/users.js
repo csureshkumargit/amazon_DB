@@ -66,6 +66,7 @@ exports.userLogin = async (req, res) => {
             maxAge: 1000 * 60 * 60 * 1,
             secure: true,
             httpOnly: true,
+            sameSite: 'strict'
             // withCredentials: true,
             // credentials: "include"
         });
