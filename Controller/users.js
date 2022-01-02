@@ -62,15 +62,15 @@ exports.userLogin = async (req, res) => {
             return res.status(200).json({ message: "Password in correct", isAuthenticated: false });
 
         const token = jwt.sign({ userNameFound: emailFound.username }, process.env.CLIENT_KEY);
-	res.cookie('jwt_token', token, {
+        res.cookie('jwt_token', token, {
             maxAge: 1000 * 60 * 60 * 1,
-            secure: false,
+            secure: true,
             httpOnly: true,
             // withCredentials: true,
             // credentials: "include"
         });
         res.header('access-token', token).send({ jwt: token, message: "You have been Logged in Successfully", username: emailFound.username, isAuthenticated: true });
-       
+
 
     }
     catch (err) {
