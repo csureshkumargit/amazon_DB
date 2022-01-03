@@ -28,7 +28,9 @@ const payment = require('./Router/payment');
 //     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
 //     next();
 // });
+
 app.use(cors({ origin: "https://amazon-clone-shop.herokuapp.com", credentials: true }));
+
 //app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
