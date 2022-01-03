@@ -62,7 +62,7 @@ exports.userLogin = async (req, res) => {
             return res.status(200).json({ message: "Password in correct", isAuthenticated: false });
 
         const token = jwt.sign({ userNameFound: emailFound.username }, process.env.CLIENT_KEY, { expiresIn: '1h' });
-        res.setHeader('set-cookie', `jwt_token=${token}; Path='/'; SameSite=None; secure;httpOnly`);
+        res.setHeader('set-cookie', `jwt_token=${token}; Path=/; SameSite=None; secure;httpOnly`);
         // res.cookie('jwt_token', token, {
         //     maxAge: 1000 * 60 * 60 * 1,
         //     secure: true,
