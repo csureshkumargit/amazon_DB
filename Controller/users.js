@@ -66,7 +66,7 @@ exports.userLogin = async (req, res) => {
             maxAge: 1000 * 60 * 60 * 1,
             secure: true,
             httpOnly: true,
-            SameSite: 'none'
+            SameSite: 'None'
             // credentials: "include"
         });
         return res.header('access-token', token).send({ jwt: token, message: "You have been Logged in Successfully", username: emailFound.username, isAuthenticated: true });
