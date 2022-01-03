@@ -70,7 +70,8 @@ exports.userLogin = async (req, res) => {
         //     SameSite: 'none'
         //     // credentials: "include"
         // });
-        return res.header('access-token', token).send({ jwt: token, message: "You have been Logged in Successfully", username: emailFound.username, isAuthenticated: true });
+        //return res.header('access-token', token).send({ jwt: token, message: "You have been Logged in Successfully", username: emailFound.username, isAuthenticated: true });
+        return res.status(200).send({ jwt: token, message: "You have been Logged in Successfully", username: emailFound.username, isAuthenticated: true });
 
 
     }
