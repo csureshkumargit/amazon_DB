@@ -63,7 +63,7 @@ exports.userLogin = async (req, res) => {
 
         const token = jwt.sign({ userNameFound: emailFound.username }, process.env.CLIENT_KEY, { expiresIn: '1h' });
         //res.setHeader('set-cookie', `jwt_token=${token}; Path=/; maxAge:1000*60*60*1;SameSite=None; secure;httpOnly`);
-        res.status(200).header('set-cookie', `jwt_token=${token}; Path=/; Max-Age=3600000;SameSite=None; Secure;HttpOnly`).send({ jwt: token, message: "You have been Logged in Successfully", username: emailFound.username, isAuthenticated: true });
+        res.status(200).header('set-cookie', `jwt_token=${token}; Path=/; Max-Age=1800;SameSite=None; Secure;HttpOnly`).send({ jwt: token, message: "You have been Logged in Successfully", username: emailFound.username, isAuthenticated: true });
 
 
     }
